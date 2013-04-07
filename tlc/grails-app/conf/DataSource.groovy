@@ -46,18 +46,17 @@ environments {
             password = 'testing'
         }
     }
-    production_mode {
-        dataSource {
-            url = 'jdbc:mysql://localhost:3306/production'
-            username = 'username'
-            password = 'password'
-        }
-    }
 
     production {
+        def envVar = System.env.VCAP_SERVICES
+        def credentials = envVar?grails.converters.JSON.parse(envVar)["mysql-5.1"][0]["credentials"]:null
+
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+            driverClassName = "com.mysql.jdbc.Driver"
+            url =  credentials?"jdbc:mysql://${credentials.hostname}:${credentials.port}/${credentials.name}?useUnicode=yes&characterEncoding=UTF-8":""
+            username = credentials?credentials.username:"thando.mlauzi@gmail.com"
+            password = credentails?credentials.password:"zinzi1ee"
         }
     }
 }
