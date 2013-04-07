@@ -46,11 +46,18 @@ environments {
             password = 'testing'
         }
     }
-    production {
+    production_mode {
         dataSource {
             url = 'jdbc:mysql://localhost:3306/production'
             username = 'username'
             password = 'password'
+        }
+    }
+
+    production {
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:h2:mem:testDb;MVCC=TRUE"
         }
     }
 }
