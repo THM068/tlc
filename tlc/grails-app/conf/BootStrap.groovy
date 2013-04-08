@@ -50,23 +50,23 @@ class BootStrap {
         // We will need to know the current application version below
         def appVersion = grailsApplication.metadata.'app.version'
 
-        // If a completely new system, load the initial data
-        if (SystemCurrency.count() == 0) {
-            new InitialSystemData().loadSystem(servletContext, appVersion)
-        } else {
-            SecurityService.syncCompanyAdminRole()
-            SystemWorkarea.executeUpdate('delete from SystemWorkarea')
-            def dataVersion = SystemSetting.findByCode('dataVersion') ?: new SystemSetting(code: 'dataVersion', dataType: 'string', value: '1.0', systemOnly: true)
-            if (appVersion != dataVersion.value && !UpgradeService.upgrade(dataVersion, appVersion, servletContext)) {
-                throw new IllegalArgumentException('Unable to upgrade from ' + dataVersion.value + ' to ' + appVersion)
-            }
-        }
-
-        // Initialize the Util service
-        BookService.prepareForUse(grailsApplication)
-
-        // Start the task system
-        TaskService.start()
+//        // If a completely new system, load the initial data
+//        if (SystemCurrency.count() == 0) {
+//            new InitialSystemData().loadSystem(servletContext, appVersion)
+//        } else {
+//            SecurityService.syncCompanyAdminRole()
+//            SystemWorkarea.executeUpdate('delete from SystemWorkarea')
+//            def dataVersion = SystemSetting.findByCode('dataVersion') ?: new SystemSetting(code: 'dataVersion', dataType: 'string', value: '1.0', systemOnly: true)
+//            if (appVersion != dataVersion.value && !UpgradeService.upgrade(dataVersion, appVersion, servletContext)) {
+//                throw new IllegalArgumentException('Unable to upgrade from ' + dataVersion.value + ' to ' + appVersion)
+//            }
+//        }
+//
+//        // Initialize the Util service
+//        BookService.prepareForUse(grailsApplication)
+//
+//        // Start the task system
+//        TaskService.start()
     }
 
     def destroy = {
