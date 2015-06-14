@@ -9,14 +9,18 @@ modules = {
 
     core {
         dependsOn 'base'
-
         resource url: '/less/main.less', attrs: [rel: 'stylesheet/less', type: 'css']
+        resource url: '/css/bootstrap/bootstrap.css'
+        resource url: '/css/bootstrap/bootstrap.min.css'
+
     }
 
     intro {
         dependsOn 'base'
 
         resource url: '/less/intro.less', attrs: [rel: 'stylesheet/less', type: 'css']
+        resource url: '/css/bootstrap/bootstrap.css'
+        //resource url: '/css/bootstrap/bootstrap.min.css'
     }
 
     errors {

@@ -86,7 +86,7 @@
 </div>
 <g:layoutBody/>
 <p>&nbsp;</p>
-<div id="footer">Copyright 2010-2013 Thando Mafela</div>
+<div id="footer">Copyright 2010-2013 Gwayi IT Solutions</div>
 <r:layoutResources/>
 </body>
 </html>

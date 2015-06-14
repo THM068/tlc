@@ -64,12 +64,16 @@
                         <input type="password" maxlength="30" size="20" id="password" name="password" value="${display(bean: systemUserInstance, field: 'password')}"/>&nbsp;<g:help code="systemUser.password"/>
                     </td>
                 </tr>
+                <tr class="prop">
+                    <td>
+
+                            <input class="save btn btn-warning" type="submit" value="${msg(code: 'systemUser.login.button', 'default': 'Login')}"/>
+
+                    </td>
+               </tr>
 
                 </tbody>
             </table>
-        </div>
-        <div class="buttons">
-            <span class="button"><input class="save" type="submit" value="${msg(code: 'systemUser.login.button', 'default': 'Login')}"/></span>
         </div>
     </g:form>
 </div>

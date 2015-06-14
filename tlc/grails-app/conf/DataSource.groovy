@@ -34,9 +34,11 @@ hibernate {
 environments {
     development {
         dataSource {
-            url = 'jdbc:mysql://localhost:3306/development'
-            username = 'developer'
-            password = 'developing'
+            url = 'jdbc:mysql://localhost:3306/tlcdev'
+            driverClassName = "com.mysql.jdbc.Driver"
+            dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+            username = 'root'
+            password = 'zinzilee'
         }
     }
     test {
@@ -47,26 +49,26 @@ environments {
         }
     }
 
-//    production {
-//        dataSource {
-//            url = 'jdbc:mysql://localhost:3306/development'
-//            username = 'developer'
-//            password = 'developing'
-//        }
-//    }
-
     production {
-        def envVar = System.env.VCAP_SERVICES
-        def credentials = envVar?grails.converters.JSON.parse(envVar)["mysql-5.1"][0]["credentials"]:null
-
-
-
         dataSource {
-            dbCreate = "update"
-            driverClassName = "com.mysql.jdbc.Driver"
-            url =  credentials?"jdbc:mysql://${credentials.hostname}:${credentials.port}/${credentials.name}?useUnicode=yes&characterEncoding=UTF-8":""
-            username = credentials?credentials.username:"thando.mlauzi@gmail.com"
-            password = credentails?credentials.password:"zinzi1ee"
+            url = 'jdbc:mysql://localhost:3306/tlcprod'
+            username = 'root'
+            password = 'zinzilee'
         }
     }
+
+//    production {
+//        def envVar = System.env.VCAP_SERVICES
+//        def credentials = envVar?grails.converters.JSON.parse(envVar)["mysql-5.1"][0]["credentials"]:null
+//
+//
+//
+//        dataSource {
+//            dbCreate = "update"
+//            driverClassName = "com.mysql.jdbc.Driver"
+//            url =  credentials?"jdbc:mysql://${credentials.hostname}:${credentials.port}/${credentials.name}?useUnicode=yes&characterEncoding=UTF-8":""
+//            username = credentials?credentials.username:"thando.mlauzi@gmail.com"
+//            password = credentails?credentials.password:"zinzi1ee"
+//        }
+//    }
 }
